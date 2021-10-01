@@ -1,19 +1,22 @@
-import React from 'react';
-// import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { fetchDataPortfolio } from '../services';
 
 import PersonalInfo from '../components/PersonalInfo';
 import Skills from '../components/Skills';
-// import Portfolio from '../context/Context';
+import Portfolio from '../context/Context';
 
 import './AboutMe.css';
 
 const AboutMe = () => {
-  // const { aboutMe } = useContext(Portfolio);
+  const { setAboutMe } = useContext(Portfolio);
 
-  // useEffect(() => {
-  //   console.log(aboutMe);
-  //   return aboutMe;
-  // }, [aboutMe]);
+  useEffect(() => {
+      const aboutMeFetch = async () => {
+        const { basics, skills } = await fetchDataPortfolio();
+        setAboutMe({basics, skills});
+      };
+    aboutMeFetch();
+  }, [setAboutMe]);
 
   return (
     <section id="about-me">

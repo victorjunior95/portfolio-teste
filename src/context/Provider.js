@@ -1,11 +1,9 @@
-// import React from 'react';
-// import React, { useState } from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import { useHistory } from 'react-router-dom';
 import Portfolio from './Context';
 import { fetchDataPortfolio } from '../services';
-// import { fetchAboutMe, fetchProjects, fetchContact } from '../services';
+import { defaultAbout } from './defaultContext';
 
 const Provider = ({ children }) => {
   // const history = useHistory();
@@ -13,38 +11,17 @@ const Provider = ({ children }) => {
   //   history.push(path);
   // };
 
+
+
   // Só preciso fornecer as informações - primeiro parâmetro
-  const [aboutMe, setAboutMe] = useState({});
-  const [projects, setProjects] = useState([]);
-  const [contact, setContact] = useState('');
+  const [aboutMe, setAboutMe] = useState(defaultAbout);
+  // const [projects, setProjects] = useState([]);
+  // const [contact, setContact] = useState('');
 
-  // Uso useEffect que faz o fetch genérico e "seto" nos respectivos estados os resultados que usarei
-  useEffect(() => {
-      const getAboutMe = async () => {
-        const { basics, skills } = await fetchDataPortfolio();
-        const dataAboutMe = { basics, skills } // basics: objeto, skills: array de objetos
-        setAboutMe(dataAboutMe);
-      };
-      const getProjects = async () => {
-        const { projects } = await fetchDataPortfolio();
-        const dataProjects = projects; // array de objetos
-        setProjects(dataProjects);
-      };
-      const getContact = async () => {
-        const { basics } = await fetchDataPortfolio();
-        const dataContact = basics.phone; // string
-        setContact(dataContact);
-      };
-      getAboutMe();
-      getProjects();
-      getContact();
-  }, []);
-
-  // const aboutMeFetch = async () => {
-  //   const results = await fetchAboutMe();
-  //   setAboutMe(results);
-  //   return results;
-  // };
+  const aboutMeFetch = async () => {
+    const { basics, skills } = await fetchDataPortfolio();
+    setAboutMe({basics, skills});
+  };
 
   // const projectsFetch = async () => {
   //   const results = await fetchProjects();
@@ -60,17 +37,13 @@ const Provider = ({ children }) => {
 
   const context = {
     aboutMe,
-    projects,
-    contact
+    setAboutMe,
+    // projects,
+    // contact,
+    aboutMeFetch,
+    // getProjects,
+    // getContact
   };
-  // const context = {
-  //   aboutMe,
-  //   aboutMeFetch,
-  //   projects,
-  //   projectsFetch,
-  //   contact,
-  //   contactFetch
-  // };
 
   return (
     <div>
