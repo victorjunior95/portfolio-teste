@@ -1,19 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
 import Portfolio from './Context';
 import { fetchDataPortfolio } from '../services';
 import { defaultAbout } from './defaultContext';
 
 const Provider = ({ children }) => {
-  // const history = useHistory();
-  // const redirectPages = (path) => {
-  //   history.push(path);
-  // };
-
-
-
-  // Só preciso fornecer as informações - primeiro parâmetro
   const [aboutMe, setAboutMe] = useState(defaultAbout);
   // const [projects, setProjects] = useState([]);
   // const [contact, setContact] = useState('');

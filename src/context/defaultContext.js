@@ -4,5 +4,7 @@ export const defaultAbout = {
     region: '',
     phone: '',
     email: '',
-  }
+    profiles: [],
+  },
+  skills: [],
 };
