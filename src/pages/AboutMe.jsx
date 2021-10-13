@@ -2,8 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { fetchDataPortfolio } from '../services';
 
 import PersonalInfo from '../components/PersonalInfo';
-// import Skills from '../components/Skills';
-import Skills from './Skills';
+import Skills from '../components/Skills';
 import Portfolio from '../context/Context';
 
 import './AboutMe.css';
