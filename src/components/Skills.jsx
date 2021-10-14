@@ -1,44 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Skills.css';
 
-const Skills = () => (
-  <section id="skills">
-    <h3>Habilidade 1</h3>
-    <div className="progress">
-      <div className="step complete">Básico</div>
-      <div className="step complete">Intermediário</div>
-      <div className="step complete">Avançado</div>
-    </div>
+import Portfolio from '../context/Context';
 
-    <h3>Habilidade 2</h3>
-    <div className="progress">
-      <div className="step complete">Básico</div>
-      <div className="step complete">Intermediário</div>
-      <div className="step">Avançado</div>
-    </div>
+const Skills = () => {
+  const { aboutMe } = useContext(Portfolio);
+  const { skills } = aboutMe;
 
-    <h3>Habilidade 3</h3>
-    <div className="progress">
-      <div className="step complete">Básico</div>
-      <div className="step ">Intermediário</div>
-      <div className="step">Avançado</div>
-    </div>
-
-    <h3>Habilidade 4</h3>
-    <div className="progress">
-      <div className="step complete">Básico</div>
-      <div className="step complete">Intermediário</div>
-      <div className="step complete">Avançado</div>
-    </div>
-
-    <h3>Habilidade 5</h3>
-    <div className="progress">
-      <div className="step complete">Básico</div>
-      <div className="step complete">Intermediário</div>
-      <div className="step">Avançado</div>
-    </div>
-  </section>
-);
+  return (
+    <section id="skills">
+      {
+        skills && skills.map(({name, rating}, index) => (
+            <div key={index}>
+              <h3>{name}</h3>
+                <div className="progress">
+                  <div className={rating > 0 ? "step complete" : "step"}>Learning</div>
+                  <div className={rating > 1 ? "step complete" : "step"}>Beginner</div>
+                  <div className={rating > 2 ? "step complete" : "step"}>Intermediate</div>
+                  <div className={rating > 3 ? "step complete" : "step"}>Advanced</div>
+                  <div className={rating > 4 ? "step complete" : "step"}>Expert</div>
+                </div>
+            </div>
+          ))
+      }
+    </section>
+  )
+};
 
 export default Skills;

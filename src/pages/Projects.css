@@ -9,7 +9,9 @@
 }
 
 #projects li {
-  padding: 10px;
+  max-height: 150px;
+  min-height: 130px;
+  padding: 15px;
 }
 
 #projects li:hover {
@@ -17,12 +19,18 @@
   cursor: pointer;
 }
 
+#projects li a {
+  text-decoration: none;
+  color: black;
+}
+
 #projects li img {
   float: left;
   margin-right: 15px;
+  width: 180px;
 }
 
 #projects li p {
   font-family: serif;
-  font-size: 12px;
+  font-size: 16px;
 }
