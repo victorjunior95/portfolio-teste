@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Portfolio from './Context';
 import { fetchDataPortfolio } from '../services';
-import { defaultAbout } from './defaultContext';
+import { defaultData } from './defaultContext';
 
 const Provider = ({ children }) => {
-  const [aboutMe, setAboutMe] = useState(defaultAbout);
-  // const [projects, setProjects] = useState([]);
+  const [aboutMe, setAboutMe] = useState(defaultData);
+  const [projects, setProjects] = useState(defaultData.projects);
   // const [contact, setContact] = useState('');
 
   const aboutMeFetch = async () => {
@@ -14,14 +14,14 @@ const Provider = ({ children }) => {
     setAboutMe({basics, skills});
   };
 
-  // const projectsFetch = async () => {
-  //   const results = await fetchProjects();
-  //   setProjects(results);
-  //   return results;
-  // };
+  const projectsFetch = async () => {
+    const results = await fetchDataPortfolio();
+    setProjects(results);
+    return results;
+  };
 
   // const contactFetch = async () => {
-  //   const results = await fetchContact();
+  //   const results = await fetchDataPortfolio();
   //   setContact(results);
   //   return results;
   // };
@@ -29,11 +29,13 @@ const Provider = ({ children }) => {
   const context = {
     aboutMe,
     setAboutMe,
-    // projects,
+    projects,
+    setProjects,
     // contact,
+    // setContact,
     aboutMeFetch,
-    // getProjects,
-    // getContact
+    projectsFetch,
+    // contactFetch
   };
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import AboutMe from '../pages/AboutMe';
+import Projects from '../pages/Projects'
 
 const NavBar = () => (
   <header>
@@ -29,13 +30,13 @@ const Paths = () => (
 
     {/* // <Route path="/contact">
     //   <ContactForm />
-    // </Route>
+    // </Route> */}
 
-    // <Route path="/projects">
-    //   <Projects />
-    // </Route>
+    <Route path="/projects">
+      <Projects />
+    </Route>
 
-    // <Route>
+    {/* // <Route>
     //   <section>
     //     <h1>Página não encontrada</h1>
     //   </section>

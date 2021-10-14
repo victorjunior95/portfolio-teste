@@ -1,4 +1,4 @@
-export const defaultAbout = {
+export const defaultData= {
   basics: {
     name: '',
     region: '',
@@ -7,4 +7,5 @@ export const defaultAbout = {
     profiles: [],
   },
   skills: [],
+  projects: []
 };
