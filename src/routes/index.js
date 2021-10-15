@@ -2,7 +2,9 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import AboutMe from '../pages/AboutMe';
-import Projects from '../pages/Projects'
+import Projects from '../pages/Projects';
+import ContactForm from '../pages/ContactForm';
+// import ContactForm from '../components/ContactForm';
 
 const NavBar = () => (
   <header>
@@ -28,9 +30,9 @@ const Paths = () => (
       <AboutMe />
     </Route>
 
-    {/* // <Route path="/contact">
-    //   <ContactForm />
-    // </Route> */}
+    <Route path="/contact">
+      <ContactForm />
+    </Route>
 
     <Route path="/projects">
       <Projects />

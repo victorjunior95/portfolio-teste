@@ -13,7 +13,7 @@ class ContactForm extends React.Component {
       case 'message':
         return ContactForm.validatePresence('Mensagem de contato', value);
       case 'email': {
-        const isValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2})$/i);
+        const isValid = value.match(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/);
         return isValid ? '' : 'E-mail inválido.';
       }
       default:
